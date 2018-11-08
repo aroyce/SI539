@@ -1,0 +1,101 @@
+<!--the majority of this code was taken from https://www.w3schools.com/graphics/game_controllers.asp; I also received help from Kangning during office hours.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+ul {
+    list-style: none;
+}
+</style>
+</head>
+<body onload="startGame()">
+<script>
+
+var myGamePiece;
+
+function startGame() {
+    myGamePiece = new component(-20, -20, 15, 0, 2*Math.PI, "red");
+    myGameArea.start();
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 800;
+        this.canvas.height = 500;
+        this.canvas.style.cursor = "none"; //hide the original cursor
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.interval = setInterval(updateGameArea, 20);
+        window.addEventListener('mousemove', function (e) {
+            myGameArea.x = e.pageX;
+            myGameArea.y = e.pageY;
+        })
+        //start color change listener
+        window.addEventListener('keydown', function (e) {
+            myGameArea.keys = (myGameArea.keys || []);
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");            
+        })
+        //end color change listener
+    }, 
+    clear : function(){
+
+        this.context.clear(0,0, this.canvas.width, this.canvas.height);
+    }
+}
+function component(x, y, r, startAngle, endAngle, color) {
+    this.speedX = 0;
+    this.speedY = 0;    
+    this.x = x;
+    this.y = y; 
+    this.r = r;
+    this.startAngle = startAngle;
+    this.endAngle = endAngle;
+    this.color = color;   
+    this.update = function() {
+        ctx = myGameArea.context;
+        ctx.fillStyle = this.color;
+        ctx.arc(this.x, this.y, this.r, this.startAngle, this.endAngle, this.color);
+        ctx.fill();
+        ctx.moveTo(this.x,this.y);	
+    }
+
+}
+
+function updateGameArea() {
+
+    if (myGameArea.x && myGameArea.y) {
+        myGamePiece.x = myGameArea.x;
+        myGamePiece.y = myGameArea.y;      
+    }
+    if (myGameArea.keys && myGameArea.keys[66]) {myGamePiece.color = "blue"; }
+    if (myGameArea.keys && myGameArea.keys[71]) {myGamePiece.color = "green"; }
+    if (myGameArea.keys && myGameArea.keys[82]) {myGamePiece.color = "red"; }
+    if (myGameArea.keys && myGameArea.keys[89]) {myGamePiece.color = "yellow"; }
+    if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.r += 1; }
+    if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.r += -1; }
+    myGameArea.context.beginPath();
+    myGamePiece.update();
+}
+
+</script>
+<p>You can change the color of the line. To do so, press:</p>
+<ul>
+    <li>(b) for blue</li>
+    <li>(g) for green</li>
+    <li>(r) for red</li>
+    <li>(y) for yellow</li>
+</ul>
+<p>To change the thickness of the line, press the up and down arrows.</p>
+
+</body>
+</html>
