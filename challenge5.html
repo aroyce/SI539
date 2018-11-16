@@ -1,3 +1,5 @@
+<!--this code was provided in class discussion section-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +37,19 @@
 		text-align: center;
 	}
 	</style>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('img').mouseover(function(){
+				$('#image').css('background-image', "url('"+$(this).attr("src")+"')");
+				$('#image').html($(this).attr("alt"));
+			})
+			$('img').mouseout(function(){
+				$('#image').css('background-image', "");
+				$('#image').html("Hover over an image below.");
+			});
+		});
+	</script>
 
 </head>
 <body>
@@ -70,17 +84,7 @@
 		
 			src = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon3.jpg" 
 			alt = "Young Puppy";>
-<script type="text/javascript">
-	function upDate(i){
-		document.getElementById('image').style.backgroundImage="url('"+i.src+"')";
-		document.getElementById('image').innerHTML= i.alt;
-	}
 
-	function unDo(i){
-		document.getElementById('image').style.backgroundImage="url()";
-		document.getElementById('image').innerHTML= "Hover/Tab over an image below."
-	}
-</script>
 </body>
 </html>
 	

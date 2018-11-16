@@ -1,3 +1,5 @@
+<!--this code was provided in class discussion section-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,39 +43,24 @@
         </fieldset>
         <input type="submit" class="button" value="Submit information"> 
     </form>
-    <script> //Challenge 3
-            $("form").submit(function( event ) {
-               // COLLEEN - Super cool.  Check the value of the element with the name of favfruit.  Usually we just use ids.
-               // Note, val does not return true or false, it returns the actual value.
-                 if ( $('input[name=favfruit]:checked').val()){
-                   return;
-               }
-              
-                 alert("You must pick a value")
-                 // This next line is the equivalent of the return false we were using previously.
-                 event.preventDefault();
-         
-             }); //end challenge 3
-             </script> 
-<script> //start challenge 4
-    function checkForm(){
-        var a = document.getElementById("fullname")
-        var b = document.getElementById("streetaddr")
-        if (a.value.length == 0)
-            {
-                document.getElementById("nameerrormsg").style.display = "block"; a = 0;}
+
+<script> 
+    $('form').submit(function(){
+        var valid = true;
+        $('form input[type=text]').each(function(){
+            if(!(this.value)){
+                valid = false;
+                $(this).next('p').addClass('errormsg');
+            }
             else {
-                document.getElementById("nameerrormsg").style.display = "none";}
-
-        if (b.value.length == 0)
-            {document.getElementById("addrerrormsg").style.display = "block"; b = 0}
-        else {document.getElementById("addrerrormsg").style.display = "none"; }
-
-        if (b == 0 || a == 0){
-            alert("All form fields require a response.")
-            return false;
-        }
-    }  //end challenge 4
+                $(this).next('p').removeClass('errormsg');
+            }
+    });
+    if (valid == false){
+        event.preventDefault();
+        return false;
+    }
+});
     </script>
 </body>
 </html>
