@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Challenge 4</title>
+    <style>
+        .button{
+            display: inline-block;
+            height: 2em;
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+            margin: 20px;
+        }
+    .errormsg { 
+    	color:red;
+    	/*font: Use a Google font*/
+        display: block; } 
+    p {
+        display: none;
+    }
+    </style>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <h1>Challenge 4</h1>
+	<form action="challenge5.html" onsubmit="return checkForm();">
+        <fieldset>
+        <legend>Personal details</legend>
+          <label for="fullname">Full name: </label>
+            <input type="text" name="fullname" id="fullname">
+       
+            <p id="nameerrormsg">Please enter your name above</p>
+
+          <label for ="streetaddr"></label>
+            Street Address:
+            <input type="text" name="streetaddr" id="streetaddr">
+       
+            <p id="addrerrormsg">Please enter your street address</p>
+        </fieldset>
+        <input type="submit" class="button" value="Submit information"> 
+    </form>
+    <script> //Challenge 3
+            $("form").submit(function( event ) {
+               // COLLEEN - Super cool.  Check the value of the element with the name of favfruit.  Usually we just use ids.
+               // Note, val does not return true or false, it returns the actual value.
+                 if ( $('input[name=favfruit]:checked').val()){
+                   return;
+               }
+              
+                 alert("You must pick a value")
+                 // This next line is the equivalent of the return false we were using previously.
+                 event.preventDefault();
+         
+             }); //end challenge 3
+             </script> 
+<script> //start challenge 4
+    function checkForm(){
+        var a = document.getElementById("fullname")
+        var b = document.getElementById("streetaddr")
+        if (a.value.length == 0)
+            {
+                document.getElementById("nameerrormsg").style.display = "block"; a = 0;}
+            else {
+                document.getElementById("nameerrormsg").style.display = "none";}
+
+        if (b.value.length == 0)
+            {document.getElementById("addrerrormsg").style.display = "block"; b = 0}
+        else {document.getElementById("addrerrormsg").style.display = "none"; }
+
+        if (b == 0 || a == 0){
+            alert("All form fields require a response.")
+            return false;
+        }
+    }  //end challenge 4
+    </script>
+</body>
+</html>

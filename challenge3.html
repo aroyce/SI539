@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <title>Challenge 3</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+  <h1> Challenge 3</h1>
+	 <form action="challenge4.html" 
+        onsubmit= "return checkForm()">
+      <fieldset>
+        <legend>Radio buttons and Check Boxes</legend>
+        <div>
+          What's your favorite berry?: 
+          <label>
+            <input type="radio" value = "s" name="favfruit" id="opt-straw"> Strawberries
+          </label>
+          <label>
+            <input type="radio" value = "bl" name="favfruit" id="opt-blue"> Blueberries
+        </label>
+      </div>
+  </fieldset>
+  <input type="submit" value="Pick your fruit!">
+</form>
+<script>
+    $("form").submit(function( event ) {
+       // COLLEEN - Super cool.  Check the value of the element with the name of favfruit.  Usually we just use ids.
+       // Note, val does not return true or false, it returns the actual value.
+         if ( $('input[name=favfruit]:checked').val()){
+           return;
+       }
+      
+         alert("You must pick a value")
+         // This next line is the equivalent of the return false we were using previously.
+         event.preventDefault();
+ 
+     });
+     </script>
+</body>
+</html>
