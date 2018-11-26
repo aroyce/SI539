@@ -9,25 +9,41 @@
 	</script>
 	
     <link href="css/default.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/lightbox.css" rel="stylesheet">
+   
+	<link href="css/lightbox.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 
 </head>
 <body>
-	<div class = "gallery">
-		
-		<a href="images/panache-mboard.jpg" data-lightbox="portfolio-UI" data-title="UI Portfolio: Mood board for a bridal store redesign."><img src="images/tile-panache-mboard.jpg" alt="A mood board for redesigning a bridal store homepage"></a>
-		<a href="images/panache-bridals.jpg" data-lightbox="portfolio-UI" data-title="UI Portfolio: The redesigned bridal store homepage."><img src="images/tile-panache.jpg" alt="A redesigned bridal store homepage"></a>
-		<a href="images/affordable-tours.jpg" data-lightbox="portfolio-UI" data-title="UI Portfolio: A redesigned travel agency website"><img src="images/tile-affordable-tours.jpg" alt="The top third of a travel agency website showing the river in Prague"></a>
-		<a href="images/snowfarm.jpg" data-lightbox="portfolio-UI" data-title="UI Portfolio: An art camp website redesign"><img src="images/tile-snowfarm.jpg" alt="A teenage girl proudly displaying a piece of clay artwork"></a>
-		<a href="images/moss-love.jpg" data-lightbox="portfolio-UI" data-title="UI Portfolio: An index page redesign for a company that sells moss"><img src="images/tile-moss-love.jpg" alt="Flowering pink moss on a gray rock"></a>
-		<a href="images/market-basket.jpg" data-lightbox="portfolio-UI" data-title="UI Portfolio: A three-bucket webpage redesign"><img src="images/tile-market-basket.jpg" alt="The redesigned homepage for a grocery store"></a>
-		<a href="images/national-cathedral.jpg" data-lightbox="washingtonDC" data-title="Washington, DC: Arches in the tower of the National Cathedral"><img src="images/national-cathedral.jpg" alt="An enlarged photo of the National Cathedral arches"></a>
-		<a href="images/lincoln-memorial.jpg" data-lightbox="washingtonDC" data-title="Washington, DC: A closeup of the Lincoln Memorial"><img src="images/tile-lincoln-memorial.jpg" alt="The Lincoln Memorial in Washington DC"></a>
-		<a href="images/magnolia-blossoms.jpg" data-lightbox="washingtonDC" data-title="Washington, DC: A magnolia tree in bloom"><img src="images/magnolia-blossoms.jpg" alt="magnolia blossoms"></a>
-
+	<h1>Adrienne Royce Image Portfolio</h1>
+	<p>Filter the images:</p>
+	<div class="controls">
+            <button type="button" class="control" data-filter="all">All</button>
+            <button type="button" class="control" data-filter=".buildings">Buildings</button>
+            <button type="button" class="control" data-filter=".flowers">Flowers</button>
+            <button type="button" class="control" data-filter=".people">People</button>
+            <button type="button" class="control" data-filter="none">None</button>
+        </div>
+	<div class = "gallery container">	
+		<a href="images/panache-mboard.jpg" data-lightbox="portfolio-UI" data-title="UI Portfolio: Mood board for a bridal store redesign."><img src="images/tile-panache-mboard.jpg" class="mix flowers" alt="A mood board for redesigning a bridal store homepage"></a>
+		<a href="images/pillar.jpg" data-lightbox="washingtonDC" data-title="Washington, DC: Catholic University Library column detail"><img src="images/pillar.jpg" class="mix buildings" alt="the top of a column"></a>
+		<a href="images/panache-bridals.jpg" data-lightbox="portfolio-UI" data-title="UI Portfolio: The redesigned bridal store homepage."><img src="images/tile-panache.jpg" class="mix people" alt="A redesigned bridal store homepage"></a>
+		<a href="images/affordable-tours.jpg" data-lightbox="portfolio-UI" data-title="UI Portfolio: A redesigned travel agency website"><img src="images/tile-affordable-tours.jpg" class="mix buildings" alt="The top third of a travel agency website showing the river in Prague"></a>
+		<a href="images/snowfarm.jpg" data-lightbox="portfolio-UI" data-title="UI Portfolio: An art camp website redesign"><img src="images/tile-snowfarm.jpg" class="mix people" alt="A teenage girl proudly displaying a piece of clay artwork"></a>
+		<a href="images/moss-love.jpg" data-lightbox="portfolio-UI" data-title="UI Portfolio: An index page redesign for a company that sells moss"><img src="images/tile-moss-love.jpg" class="mix flowers" alt="Flowering pink moss on a gray rock"></a>
+		<a href="images/market-basket.jpg" data-lightbox="portfolio-UI" data-title="UI Portfolio: A three-bucket webpage redesign"><img src="images/tile-market-basket.jpg" class="mix " alt="The redesigned homepage for a grocery store"></a>
+		<a href="images/lincoln-memorial.jpg" data-lightbox="washingtonDC" data-title="Washington, DC: A closeup of the Lincoln Memorial"><img src="images/tile-lincoln-memorial.jpg" class="mix buildings" alt="The Lincoln Memorial in Washington DC"></a>
+		<a href="images/ladies-reading.jpg" data-lightbox="washingtonDC" data-title="Washington, DC: A mural in Jefferson Great Hall of the Library of Congress"><img src="images/ladies-reading.jpg" class="mix people" alt="A mural of two ladies reading"></a>
+		<a href="images/national-cathedral.jpg" data-lightbox="washingtonDC" data-title="Washington, DC: Arches in the tower of the National Cathedral"><img src="images/national-cathedral.jpg" class="mix buildings" alt="An enlarged photo of the National Cathedral arches"></a>
+		<a href="images/ethiopian-dinner.jpg" data-lightbox="washingtonDC" data-title="Washington, DC: Dinner at Karen Ethiopian restaurant"><img src="images/tile-ethiopian-dinner.jpg" class="mix people" alt="Adrienne Royce"></a>
+		<a href="images/magnolia-blossoms.jpg" data-lightbox="washingtonDC" data-title="Washington, DC: A magnolia tree in bloom"><img src="images/magnolia-blossoms.jpg" class="mix flowers" alt="magnolia blossoms"></a>
 	</div>
 	<script src="js/lightbox-plus-jquery.js"></script>
+	<script src="js/mixitup.min.js"></script>
 
+	<script>
+		var containerEl = document.querySelector('.container');
+		var mixer = mixitup(containerEl);
+	</script>
 </body>
 </html>
